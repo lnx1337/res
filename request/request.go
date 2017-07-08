@@ -8,20 +8,30 @@ import (
 	"os"
 )
 
-// API ERRORS
+// @var apiError constante de errores
 const apiError = `API_ERROR`
 
-// Request tiene las propiedades publicas
+/*
+* @struct Request
+* @field URL endpoint
+* @Params parametros para enviar en URL
+* @Method tipo de petición GET, POST
+ */
 type Request struct {
-	Url    string
+	URL    string
 	Params map[string]string
 	Method string
 }
 
-// NewRequest permite crear un objeto tipo request para hacer peticiones GET
+/*
+* @fuction NewRequest permite crear un objeto tipo request para hacer peticiones
+* @var url endpoint
+* @var method GET, POST
+* @var params parametros para enviar en la URL
+ */
 func NewRequest(url string, method string, params map[string]string) *Request {
 	r := &Request{}
-	r.Url = url
+	r.URL = url
 	r.Method = method
 	r.Params = params
 	return r
@@ -30,7 +40,7 @@ func NewRequest(url string, method string, params map[string]string) *Request {
 // Do Ejecuta la petición y parsea el response
 func (r *Request) Do() (string, error) {
 	client := &http.Client{}
-	req, err := http.NewRequest(r.Method, r.Url, nil)
+	req, err := http.NewRequest(r.Method, r.URL, nil)
 
 	if err != nil {
 		log.Print(err)
@@ -50,7 +60,7 @@ func (r *Request) Do() (string, error) {
 	if err != nil {
 		return "", errors.New(apiError)
 	}
-
+	// se destruye el objeto
 	defer resp.Body.Close()
 
 	respBody, err := ioutil.ReadAll(resp.Body)
