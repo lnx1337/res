@@ -8,14 +8,17 @@ import (
 	"os"
 )
 
+// API ERRORS
 const apiError = `API_ERROR`
 
+// Request tiene las propiedades publicas
 type Request struct {
 	Url    string
 	Params map[string]string
 	Method string
 }
 
+// NewRequest permite crear un objeto tipo request para hacer peticiones GET
 func NewRequest(url string, method string, params map[string]string) *Request {
 	r := &Request{}
 	r.Url = url
@@ -24,9 +27,10 @@ func NewRequest(url string, method string, params map[string]string) *Request {
 	return r
 }
 
-func (self *Request) Do() (string, error) {
+// Do Ejecuta la petición y parsea el response
+func (r *Request) Do() (string, error) {
 	client := &http.Client{}
-	req, err := http.NewRequest(self.Method, self.Url, nil)
+	req, err := http.NewRequest(r.Method, r.Url, nil)
 
 	if err != nil {
 		log.Print(err)
@@ -35,7 +39,7 @@ func (self *Request) Do() (string, error) {
 
 	q := req.URL.Query()
 
-	for k, v := range self.Params {
+	for k, v := range r.Params {
 		q.Add(k, v)
 	}
 
