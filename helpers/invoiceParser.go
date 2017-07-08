@@ -8,17 +8,15 @@ import (
 
 const findNumbersRegex = `[0-9]+`
 
-/* ParseResponse
+/*
 * @function ParseResponse
 * @returns int, bool
 * @public
-* @var iLimit cambia a true cuando el resultado de la API responde
+* @var isLimit cambia a true cuando el resultado de la API responde
 * "mas de n resultados"
 * @var number toma el valor de las facturas actuales en el rango de fechas
 * number puede ser el limite maximo de resultados por petición
  */
-
-// ParseResponse Parsea e identifica el tipo de respuesta de el servicio facturas
 func ParseResponse(resp string) (int64, bool) {
 
 	var isLimit = false
