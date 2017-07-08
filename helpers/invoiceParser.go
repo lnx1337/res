@@ -6,20 +6,25 @@ import (
 	"strings"
 )
 
-const numbersRegex = `[0-9]+`
+const findNumbersRegex = `[0-9]+`
 
-// ParseResponse ayuda a parsear e identificar el tipo de respuesta
-// de el servicio facturas
-// isLimit cambia a true cuando el resultado de la API responde
-// "mas de n resultados"
-// number toma el valor de las facturas actuales en el rango de fechas
-// number puede ser el limite maximo de resultados por petición
+/* ParseResponse
+* @function ParseResponse
+* @returns int, bool
+* @public
+* @var iLimit cambia a true cuando el resultado de la API responde
+* "mas de n resultados"
+* @var number toma el valor de las facturas actuales en el rango de fechas
+* number puede ser el limite maximo de resultados por petición
+ */
+
+// ParseResponse Parsea e identifica el tipo de respuesta de el servicio facturas
 func ParseResponse(resp string) (int64, bool) {
 
 	var isLimit = false
 	var re *regexp.Regexp
 
-	re = regexp.MustCompile(numbersRegex)
+	re = regexp.MustCompile(findNumbersRegex)
 	numbers := re.FindAllString(resp, -1)[0]
 
 	number, err := strconv.ParseInt(numbers, 10, 64)
