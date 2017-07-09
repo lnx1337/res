@@ -14,7 +14,7 @@ const apiError = `API_ERROR`
 /*
 * @struct Request
 * @field URL endpoint
-* @Params parametros para enviar en URL
+* @Params parámetros para enviar en URL
 * @Method tipo de petición GET, POST
  */
 type Request struct {
@@ -24,10 +24,10 @@ type Request struct {
 }
 
 /*
-* @fuction NewRequest permite crear un objeto tipo request para hacer peticiones
+* @fuction NewRequest Crea un objeto tipo request para hacer peticiones
 * @var url endpoint
 * @var method GET, POST
-* @var params parametros para enviar en la URL
+* @var params parámetros para enviar en la URL
  */
 func NewRequest(url string, method string, params map[string]string) *Request {
 	r := &Request{}
@@ -37,7 +37,7 @@ func NewRequest(url string, method string, params map[string]string) *Request {
 	return r
 }
 
-// Do Ejecuta la petición y parsea el response
+// @function Do Ejecuta la petición y parsea la respuesta.
 func (r *Request) Do() (string, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest(r.Method, r.URL, nil)
