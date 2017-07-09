@@ -8,7 +8,11 @@ import (
 	"github.com/metakeule/fmtdate"
 )
 
-//GetMidDate Obtiene la fecha intermedia entre dos fechas
+/*
+* @function GetMidDate Obtiene la fecha intermedia entre dos fechas
+* @var startDate fecha de inicio en formato YYYY-MM-DD
+* @var endDate fecha final en formato YYYY-MM-DD
+ */
 func GetMidDate(startDate, endDate string) string {
 	var day string
 	var year string
@@ -59,19 +63,29 @@ func GetMidDate(startDate, endDate string) string {
 	return fmt.Sprint(year, "-", month, "-", day)
 }
 
-// Parse permite manejar las fechas en go
+/*
+* @function Parse permite manejar las fechas en go
+* @var date recibe una fecha en formato YYYY-MM-DD
+* @return fecha para poder hacer operaciones con go
+ */
 func Parse(date string) time.Time {
 	parsed, _ := fmtdate.Parse("YYYY-MM-DD", date)
 	return parsed
 }
 
-// GetDateInDays retorna la fecha en dias
+/*
+* @fuction GetDateInDays
+* @ret fecha en dias en formato int
+ */
 func GetDateInDays(date time.Time) int {
 	days := HoursToDays(DateToHours(date))
 	return days
 }
 
-// DateToHours retorna la fecha enviada en horas desde 1900-01-01
+/*
+* @fuction DateToHours
+* @return Fecha recibida en horas desde 1900-01-01
+ */
 func DateToHours(date time.Time) int {
 	dateBASE, _ := fmtdate.Parse("YYYY-MM-DD", "1900-01-01")
 	dDS := date.Sub(dateBASE)
@@ -79,7 +93,9 @@ func DateToHours(date time.Time) int {
 	return hours
 }
 
-// HoursToDays Esta función convierte las horas en días
+/* @function HoursToDays
+* @return horas en días
+ */
 func HoursToDays(hours int) int {
 	return (hours / 24)
 }
