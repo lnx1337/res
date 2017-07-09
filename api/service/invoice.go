@@ -1,7 +1,7 @@
 package service
 
 import (
-	m "resuelve/invoice"
+	m "resuelve/invoice/invoice"
 
 	"github.com/lnx1337/go/api"
 )

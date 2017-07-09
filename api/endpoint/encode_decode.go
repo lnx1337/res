@@ -3,7 +3,7 @@ package endpoint
 import (
 	"context"
 	"net/http"
-	m "resuelve/invoice"
+	m "resuelve/invoice/invoice"
 )
 
 /*

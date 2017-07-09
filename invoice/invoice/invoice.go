@@ -2,9 +2,9 @@ package invoice
 
 import (
 	"log"
-	"resuelve/helpers"
-	"resuelve/request"
-	"resuelve/utils"
+	"resuelve/invoice/helpers"
+	"resuelve/invoice/request"
+	"resuelve/invoice/utils"
 )
 
 const service = `/facturas`
