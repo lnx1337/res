@@ -3,7 +3,7 @@ package endpoint
 import (
 	"context"
 
-	m "resuelve/invoice"
+	m "resuelve/invoice/invoice"
 
 	"resuelve/api/service"
 
