@@ -11,7 +11,7 @@ Este API sigue el modelo de aplicación client-server, la comunicacioón es medi
 
 ## Instalación del proyecto en local:
 
-## Dependencias
+### Dependencias
 
 #### Instalar Sistema base
 Linux Debian, Ubuntu
@@ -95,7 +95,7 @@ $ cd resuelve/
 
 
 
-#### Ejecutamos el make file
+Ejecutamos el make file
 
 Se instalaran todas las dependencias de go necesarias para el proyecto y se ejecutarán los test de cada módulo.
 
@@ -106,7 +106,7 @@ $ sudo make install
 
 #### Archivos de configuración
 
-En el archivo service.invoice.toml se podrá editar el puerto de inicio. 
+En el archivo service.invoice.toml se podrá editar el puerto HTTP de inicio. 
 
 ```
 $vim service.invoice.toml 
@@ -114,7 +114,7 @@ $vim service.invoice.toml
 ```
 
 
-### Ejecutar el proyecto en local:
+#### Ejecutar el proyecto en local:
 
 ```
 $ ./run.sh
