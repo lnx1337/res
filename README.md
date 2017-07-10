@@ -1,9 +1,9 @@
 # Resuelve / Facturas / API
 
 ## Introducción:
-El ejercicio esta desarollado en [GOLANG](https://golang.org/) y es una API que retorna el total de facturas de un cliente.
+El ejercicio está desarollado en [GOLANG](https://golang.org/) y es una API que retorna el total de facturas de un cliente.
  
-Este API sigue el modelo de aplicación client-server, la comunicacioón es mediante mensajes serializados en formato JSON. El API permitirá a uno o más clients comunicarse con un server y poder consultar las facturas de un cliente en un periodo en especifico.
+ La API sigue el modelo de aplicación client-server, la comunicación es mediante mensajes serializados en formato JSON. La API permitirá a uno o más usuarios comunicarse con un servidor y consultar el número de facturas de un cliente en un periodo en especifico, así como el número de peticiones efectuadas al servicio intermedio proporcionado por resuelve.
 
 ### DEMO
 
@@ -13,7 +13,24 @@ Este API sigue el modelo de aplicación client-server, la comunicacioón es medi
 ```
 
 #### Ejemplo
-[http://resuelve.jair.xyz/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12](http://resuelve.jair.xyz/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12)
+
+Traer el número de facturas del cliente con id=717f076e-e13c-45b4-bcc4-51c229e1b326 en el periodo 2017-01-01 a 2017-06-12 
+[http://resuelve.jair.xyz/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-06-12](http://resuelve.jair.xyz/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-06-12)
+
+
+#### Respuesta del API:
+```
+// La API responderá el numero total de facturas para ese id. 
+// La API responderá el total de peticiones al servidor intermedio numberOfRequests.
+{
+    data: {
+        total: 683,
+        numberOfRequests: 21
+    },
+    error: false
+}
+
+```
 
 ## Instalación del proyecto en local:
 
@@ -63,7 +80,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ```
 
-Ejecutamos el archivo ~/.profile
+Ejecutar el archivo ~/.profile
 
 ```
 $source ~/.profile
@@ -93,7 +110,7 @@ $ git clone https://github.com/lnx1337/res.git resuelve
 
 ```
 
-Accedemos al directorio raíz del proyecto:
+Acceder al directorio raíz del proyecto:
 
 ```
 $ cd resuelve/
@@ -101,7 +118,7 @@ $ cd resuelve/
 
 
 
-Ejecutamos el make file
+Ejecutar Makefile
 
 Se instalaran todas las dependencias de go necesarias para el proyecto y se ejecutarán los test de cada módulo.
 
