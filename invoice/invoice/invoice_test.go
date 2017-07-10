@@ -24,7 +24,7 @@ func TestGetInvoiceOK(t *testing.T) {
 	id := "717f076e-e13c-45b4-bcc4-51c229e1b326"
 	inv := NewInvoice(id)
 	total, _ := inv.GetInvoice("2017-01-01", "2017-12-12")
-	if total > 152 {
-		t.Error("Expected:", 0, "total:", total)
+	if total != 1480 {
+		t.Error("Expected:", 1480, "total:", total)
 	}
 }

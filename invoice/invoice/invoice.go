@@ -1,7 +1,6 @@
 package invoice
 
 import (
-	"log"
 	"resuelve/invoice/helpers"
 	"resuelve/invoice/request"
 	"resuelve/invoice/utils"
@@ -62,10 +61,10 @@ func (fS *Invoice) GetInvoice(startDate, endDate string) (int64, error) {
 	number, isLimit := helpers.ParseResponse(resp)
 
 	if isLimit {
-		log.Print(startDate, "  a  ", endDate, "  ", resp)
+		// log.Print(startDate, "  a  ", endDate, "  ", resp)
 		fS.Limit = number
 	} else {
-		log.Print(startDate, "  a  ", endDate, "   Encontradas: ", number)
+		// log.Print(startDate, "  a  ", endDate, "   Encontradas: ", number)
 		numFacturas = number
 	}
 
