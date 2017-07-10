@@ -1,17 +1,18 @@
 # Resuelve / Facturas / API
 
 ## Introducción:
-El back-end esta desarollado en [GOLANG](https://golang.org/) y es una API que retorna el total de facturas de un cliente.
+El ejercicio esta desarollado en [GOLANG](https://golang.org/) y es una API que retorna el total de facturas de un cliente.
  
 Este API sigue el modelo de aplicación client-server, la comunicacioón es mediante mensajes serializados en formato JSON. El API permitirá a uno o más clients comunicarse con un server y poder consultar las facturas de un cliente en un periodo en especifico.
 
-###DEMO
+### DEMO
 
 [http://localhost:1337/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12](http://localhost:1337/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12)
 
 ## Instalación del proyecto en local:
 
- 
+## Dependencias
+
 #### Instalar Sistema base
 Linux Debian, Ubuntu
  
@@ -27,7 +28,7 @@ $ rm -rf ~/go1.8.3.linux-amd64.tar.gz
 
 #### Instalar [Go](https://golang.org/dl ) MAC
 
-Descarga e instalar [GO](https://storage.googleapis.com/golang/go1.8.3.darwin-amd64.pkg)
+Descargar e instalar [GO](https://storage.googleapis.com/golang/go1.8.3.darwin-amd64.pkg)
 
 #### Configuración de go en $PATH
 
@@ -70,6 +71,15 @@ $ sudo apt-get install git
 
 ```
 
+#### Instalar make
+
+```
+$ sudo apt-get install make
+
+```
+
+## Configuración del proyecto
+
 #### Clonar repositorio
 
 ```
@@ -77,20 +87,13 @@ $ git clone https://github.com/lnx1337/res.git resuelve
 
 ```
 
-###Instalación del proyecto
-
-Accedemos al directorio raiz del proyecto:
+Accedemos al directorio raíz del proyecto:
 
 ```
 $ cd resuelve/
 ```
 
-#### Instalar make
 
-```
-$ sudo apt-get install make
-
-```
 
 #### Ejecutamos el make file
 
@@ -111,11 +114,14 @@ $vim service.invoice.toml
 ```
 
 
-## Iniciar el proyecto en local:
+### Ejecutar el proyecto en local:
 
 ```
 $ ./run.sh
 ```
 
 + Se inicializa por defecto el servidor en el puerto: `1337`.
-+ Abrir algún navegador en la url : [http://localhost:1337/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12](http://localhost:1337/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12)
+
+### Demo local
+
+Abrir algún navegador en la url : [http://localhost:1337/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12](http://localhost:1337/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-12-12)
