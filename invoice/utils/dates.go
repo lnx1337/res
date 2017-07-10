@@ -30,26 +30,39 @@ func GetMidDate(startDate, endDate string) string {
 	// Years
 	yy := (dateMidInDays / 365.02)
 	onlyY := int(yy)
-	yearMod := yy - float64(onlyY)
+	yearDec := yy - float64(onlyY)
 
 	if dSParsed.Year() == dEParsed.Year() {
 		year = fmt.Sprint(dSParsed.Year())
+	} else if onlyY >= 100 {
+		yyyy := onlyY - 100
+		year = fmt.Sprint("20", yyyy)
+		if yyyy < 10 {
+			year = fmt.Sprint("200", yyyy)
+		}
+	} else {
+		year = fmt.Sprint("19", onlyY)
+		if onlyY < 10 {
+			year = fmt.Sprint("190", onlyY)
+		}
 	}
 
 	// Month
-	mm := yearMod * 365.20 / 30.42
+	mm := yearDec * 365.20 / 30.42
 	onlyM := int(mm)
-	monthMod := mm - float64(onlyM)
+	monthDec := mm - float64(onlyM)
 
 	if onlyM < 10 {
 		month = fmt.Sprint("0", onlyM)
+		if onlyM == 0 {
+			month = "12"
+		}
 	} else {
 		month = strconv.Itoa(onlyM)
 	}
 
 	// Days
-	dd := int(monthMod * 30.42)
-
+	dd := int(monthDec * 30.42)
 	if dd < 10 {
 		day = fmt.Sprint("0", dd)
 	} else {
