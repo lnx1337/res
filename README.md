@@ -19,9 +19,9 @@ Linux Debian, Ubuntu
 
 ```
 $ wget http://golang.org/dl/go1.8.3.linux-amd64.tar.gz
-$ sudo tar zxvf go1.6.1.linux-amd64.tar.gz -C /usr/local
+$ sudo tar zxvf go1.8.3.linux-amd64.tar.gz -C /usr/local
 $ export PATH=$PATH:/usr/local/go/bin
-$ rm -rf ~/go1.6.1.linux-amd64.tar.gz
+$ rm -rf ~/go1.8.3.linux-amd64.tar.gz
 
 ```
 
