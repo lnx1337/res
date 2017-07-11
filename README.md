@@ -14,10 +14,10 @@ El ejercicio está desarollado en [GOLANG](https://golang.org/) y es una API que
 
 #### Ejemplo
 
-Traer el número de facturas del cliente con id=717f076e-e13c-45b4-bcc4-51c229e1b326 en el periodo 2017-01-01 a 2017-06-12
+Traer el número de facturas del cliente con id=335f322f-873a-4e61-8c10-59c87899b984 en el periodo 2017-01-01 a 2017-12-31
 
 
-[http://resuelve.jair.xyz/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-06-12](http://resuelve.jair.xyz/v1/invoice/717f076e-e13c-45b4-bcc4-51c229e1b326/2017-01-01/2017-06-12)
+[http://resuelve.jair.xyz/v1/invoice/335f322f-873a-4e61-8c10-59c87899b984/2017-01-01/2017-12-31](http://resuelve.jair.xyz/v1/invoice/335f322f-873a-4e61-8c10-59c87899b984/2017-01-01/2017-12-31)
 
 
 #### Respuesta del API:
@@ -26,8 +26,8 @@ Traer el número de facturas del cliente con id=717f076e-e13c-45b4-bcc4-51c229e1
 // La API responderá el total de peticiones al servidor intermedio numberOfRequests.
 {
     data: {
-        total: 683,
-        numberOfRequests: 21
+        total: 1193,
+        numberOfRequests: 31
     },
     error: false
 }
