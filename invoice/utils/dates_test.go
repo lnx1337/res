@@ -23,7 +23,7 @@ func TestDateToHours(t *testing.T) {
 }
 
 func TestGetMidDate(t *testing.T) {
-	var midDate = "2017-06-25"
+	var midDate = "2017-07-01"
 	var result = GetMidDate("2017-01-01", "2017-12-30")
 	if result != midDate {
 		t.Error("expected", midDate, "result", result)

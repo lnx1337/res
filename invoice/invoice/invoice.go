@@ -61,10 +61,10 @@ func (fS *Invoice) GetInvoice(startDate, endDate string) (int64, error) {
 	number, isLimit := helpers.ParseResponse(resp)
 
 	if isLimit {
-		// log.Print(startDate, "  a  ", endDate, "  ", resp)
+		//	log.Print("Limite:  ", startDate, "  a  ", endDate, "  ", resp)
 		fS.Limit = number
 	} else {
-		// log.Print(startDate, "  a  ", endDate, "   Encontradas: ", number)
+		//	log.Print(startDate, "  a  ", endDate, "   Encontradas: ", number)
 		numFacturas = number
 	}
 
@@ -75,14 +75,21 @@ func (fS *Invoice) GetInvoice(startDate, endDate string) (int64, error) {
 	// retorna el valor para sumarlo al total de facturas.
 	if numFacturas <= fS.Limit && !isLimit {
 		return numFacturas, nil
+	} else if !isLimit {
+		return numFacturas, nil
 	}
 
 	// Se calcula la fecha intermedia entre dos fechas.
 	midPos := utils.GetMidDate(startDate, endDate)
 
+	// Se suma un día a la fecha del segundo calculo para evitar
+	// sumar facturas del día ya contado
+	datePlus := utils.Parse(midPos).AddDate(0, 0, 1)
+	dateMidPlus := utils.GetDate(datePlus)
+
 	// Inicia recursividad.
 	resp1, _ := fS.GetInvoice(startDate, midPos)
-	resp2, _ := fS.GetInvoice(midPos, endDate)
+	resp2, _ := fS.GetInvoice(dateMidPlus, endDate)
 
 	total = total + resp1 + resp2
 
