@@ -2,7 +2,6 @@ package utils
 
 import (
 	"fmt"
-	"strconv"
 	"time"
 
 	"github.com/metakeule/fmtdate"
@@ -14,9 +13,6 @@ import (
 * @var endDate fecha final en formato YYYY-MM-DD
  */
 func GetMidDate(startDate, endDate string) string {
-	var day string
-	var year string
-	var month string
 
 	dSParsed := Parse(startDate)
 	dEParsed := Parse(endDate)
@@ -24,56 +20,50 @@ func GetMidDate(startDate, endDate string) string {
 	daysDS := GetDateInDays(dSParsed)
 	daysDE := GetDateInDays(dEParsed)
 
-	// total de dias
-	dateMidInDays := float64(((daysDE - daysDS) / 2) + daysDS)
+	toInt := (daysDE - daysDS) / 2
+	dateToParse := dSParsed.AddDate(0, 0, toInt)
 
-	// Years
-	yy := (dateMidInDays / 365.02)
-	onlyY := int(yy)
-	yearDec := yy - float64(onlyY)
+	midDate := GetDate(dateToParse)
 
-	if dSParsed.Year() == dEParsed.Year() {
-		year = fmt.Sprint(dSParsed.Year())
-	} else if onlyY >= 100 {
-		yyyy := onlyY - 100
-		year = fmt.Sprint("20", yyyy)
-		if yyyy < 10 {
-			year = fmt.Sprint("200", yyyy)
-		}
-	} else {
-		year = fmt.Sprint("19", onlyY)
-		if onlyY < 10 {
-			year = fmt.Sprint("190", onlyY)
-		}
+	return midDate
+}
+
+/*
+* @function GetDate retorna fecha en formato YYYY-MM-DD
+* @var fecha en formato time.Time
+ */
+func GetDate(date time.Time) string {
+	year := date.Year()
+
+	monthNumber := int(date.Month())
+	month := GetMonth(monthNumber)
+
+	dayNumber := date.Day()
+	days := GetDays(dayNumber)
+
+	return fmt.Sprint(year, "-", month, "-", days)
+}
+
+/*
+*@function GetMonth retorna mes valido en formato MM
+*@var month numero de mes int
+ */
+func GetMonth(month int) string {
+	if month < 10 {
+		return fmt.Sprint("0", month)
 	}
+	return fmt.Sprint(month)
+}
 
-	// Month
-	mm := yearDec * 365.20 / 30.42
-	onlyM := int(mm)
-	monthDec := mm - float64(onlyM)
-
-	if onlyM < 10 {
-		month = fmt.Sprint("0", onlyM)
-		if onlyM == 0 {
-			month = "12"
-		}
-	} else {
-		month = strconv.Itoa(onlyM)
+/*
+*@function GetDays retorna día valido en formato DD
+*@var numero de día en formato int
+ */
+func GetDays(days int) string {
+	if days < 10 {
+		return fmt.Sprint("0", days)
 	}
-
-	// Days
-	dd := int(monthDec * 30.42)
-	if dd < 10 {
-		day = fmt.Sprint("0", dd)
-	} else {
-		day = strconv.Itoa(dd)
-	}
-
-	if dd < 1 {
-		day = "01"
-	}
-
-	return fmt.Sprint(year, "-", month, "-", day)
+	return fmt.Sprint(days)
 }
 
 /*
